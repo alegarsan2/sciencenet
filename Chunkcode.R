@@ -35,8 +35,8 @@ startnode_links <- entrez_link(dbfrom='pubmed', id=startnode, db='pubmed')
 startnode_citations <- startnode_links$links$pubmed_pubmed_citedin
 #startnode_links$links #shows all the link-out info available 
 
-startnode_data <- entrez_summary(db="pubmed", id=startnode)
-
+startnode_data <- entrez_search(db="pubmed", id=startnode)
+args(entrez_search())
 #Creates node list - will contain data on all nodes
 nodes <- data.frame(PubmedID = startnode_data$uid, 
                     Title = startnode_data$title, 
@@ -203,3 +203,30 @@ write.table(list_of_articles, file="significant-articles.csv", sep = ",", col.na
 #Show top 10 of last authors have published most
 top_authors <- as.data.frame(table(nodes$Last_Author))
 top_authors[order(top_authors$Freq, decreasing = TRUE)[1:10], ]
+
+
+
+##### Timeline Documentos#####
+library(ggplot2)
+library(rentrez)
+search_year <- function(year, term){
+  query <- paste(term, "AND (", year, "[PDAT])")
+  entrez_search(db="pubmed", term=query, retmax=0)$count
+}
+
+year <- 1990:2018
+papers <- sapply(year, search_year, term="microbiome", USE.NAMES=FALSE)
+
+plot(year, papers, type='b', main="The Rise of the Microbiome")
+
+plotting <- ggplot(data,aes( year,papers)) + geom_point() + theme_()
+
+data <- data.frame(year = year, papers = papers)
+
+publicaciones <- entrez_search(db = "pubmed", term = "Breast")[['ids']]
+publicaciones <-append(publicaciones, publicaciones)
+
+data <- entrez_summary(db = 'pubmed' , id = publicaciones[1:360])
+
+startnode_links <- entrez_link(dbfrom='pubmed', id=publicaciones, db='pubmed')
+startnode_citations <- startnode_links$links$pubmed_pubmed_citedin
