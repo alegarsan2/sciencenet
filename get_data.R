@@ -11,7 +11,7 @@ startnode <- c("25651787")
 num_of_levels <- 1
 
 
-######Find relations within the article####
+######Find relations within the article####sdasd
 #Poner is.null?? creo que no hace falta. en todos los levels si hay hacemos un next para continuar con el siguiente. 
 
 startnode_links <- entrez_link(dbfrom='pubmed', id=startnode, db='pubmed')
