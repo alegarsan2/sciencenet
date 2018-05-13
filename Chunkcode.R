@@ -20,6 +20,15 @@ if (!require('XML')) install.packages('XML'); library('XML')
 if (!require('rentrez')) install.packages('rentrez'); library('rentrez')
 if (!require('igraph')) install.packages('igraph'); library('igraph')
 
+
+install.packages("plotly")
+install.packages("shinySpinKit")
+install.packages("tidyverse")
+install.packages("ggraph")
+install.packages("networkD3")
+install.packages("shinycssloaders")
+install.packages("visNetwork")
+
 #Set working directory
 setwd("~/Dropbox/Projekter/2015 - Article Network")
 
