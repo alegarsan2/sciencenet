@@ -1,3 +1,6 @@
+library(shiny)
+library(shinydashboard)
+
 header <- dashboardHeader(
   title = "ScienceNet - A Webtool for network analysis of scientific literature",
   titleWidth = 650

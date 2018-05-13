@@ -73,3 +73,4 @@ df_adjacency <- as_tbl_graph(df_adjacency2)
 
 # Plot
 simpleNetwork(df_adjacency2)
+
